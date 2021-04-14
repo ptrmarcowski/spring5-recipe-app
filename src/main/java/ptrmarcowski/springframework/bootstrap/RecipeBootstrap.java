@@ -19,7 +19,7 @@ import ptrmarcowski.springframework.domain.*;
 @Component
 public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
-    //test commit
+    //test commit 2
 
     private final CategoryRepository categoryRepository;
     private final RecipeRepository recipeRepository;
