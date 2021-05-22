@@ -5,7 +5,6 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 import ptrmarcowski.springframework.commands.IngredientCommand;
-import ptrmarcowski.springframework.commands.UnitOfMeasureCommand;
 import ptrmarcowski.springframework.domain.Ingredient;
 
 @Component
@@ -29,7 +28,7 @@ public class IngredientToIngredientCommand implements Converter<Ingredient, Ingr
         ingredientCommand.setId(source.getId());
         ingredientCommand.setAmount(source.getAmount());
         ingredientCommand.setDescription(source.getDescription());
-        ingredientCommand.setUnitOfMeasure(uomConverter.convert(source.getUom()));
+        ingredientCommand.setUom(uomConverter.convert(source.getUom()));
         return ingredientCommand;
     }
 }

@@ -13,12 +13,16 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import ptrmarcowski.springframework.converters.RecipeCommandToRecipe;
+import ptrmarcowski.springframework.converters.RecipeToRecipeCommand;
 import ptrmarcowski.springframework.domain.Recipe;
 import ptrmarcowski.springframework.repositories.RecipeRepository;
 
 public class RecipeServiceImplTest {
 
 	RecipeServiceImpl recipeService;
+	RecipeCommandToRecipe recipeCommandToRecipe;
+	RecipeToRecipeCommand recipeToRecipeCommand;
 	
 	@Mock
 	RecipeRepository recipeRepository;

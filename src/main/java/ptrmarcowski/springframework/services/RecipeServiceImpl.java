@@ -1,12 +1,7 @@
 package ptrmarcowski.springframework.services;
 
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
-
-import org.springframework.stereotype.Service;
-
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
 import ptrmarcowski.springframework.commands.RecipeCommand;
 import ptrmarcowski.springframework.converters.RecipeCommandToRecipe;
 import ptrmarcowski.springframework.converters.RecipeToRecipeCommand;
@@ -14,6 +9,9 @@ import ptrmarcowski.springframework.domain.Recipe;
 import ptrmarcowski.springframework.repositories.RecipeRepository;
 
 import javax.transaction.Transactional;
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
 
 @Slf4j
 @Service
@@ -47,6 +45,12 @@ public class RecipeServiceImpl implements RecipeService{
 		}
 
 		return recipeOptional.get();
+	}
+
+	@Override
+	@Transactional
+	public RecipeCommand findCommandById(Long l) {
+		return recipeToRecipeCommand.convert(findById(l));
 	}
 
 	@Override

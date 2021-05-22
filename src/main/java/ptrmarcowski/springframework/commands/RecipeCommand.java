@@ -1,6 +1,5 @@
 package ptrmarcowski.springframework.commands;
 
-import jdk.internal.org.jline.utils.DiffHelper;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
