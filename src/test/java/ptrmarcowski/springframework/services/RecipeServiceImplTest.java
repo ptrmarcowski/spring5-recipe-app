@@ -1,22 +1,22 @@
 package ptrmarcowski.springframework.services;
 
-import static org.junit.Assert.*;
-import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.Mockito.*;
+import org.junit.Before;
+import org.junit.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import ptrmarcowski.springframework.converters.RecipeCommandToRecipe;
+import ptrmarcowski.springframework.converters.RecipeToRecipeCommand;
+import ptrmarcowski.springframework.domain.Recipe;
+import ptrmarcowski.springframework.repositories.RecipeRepository;
 
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-
-import ptrmarcowski.springframework.converters.RecipeCommandToRecipe;
-import ptrmarcowski.springframework.converters.RecipeToRecipeCommand;
-import ptrmarcowski.springframework.domain.Recipe;
-import ptrmarcowski.springframework.repositories.RecipeRepository;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.Mockito.*;
 
 public class RecipeServiceImplTest {
 
@@ -62,5 +62,17 @@ public class RecipeServiceImplTest {
 		assertNotNull("Null recipe returned", recipeReturned);
 		verify(recipeRepository, times(1)).findById(anyLong());
 		verify(recipeRepository, never()).findAll();
+	}
+
+	public void testDeleteById() throws Exception {
+
+		//given
+		Long idToDelete = Long.valueOf(2L);
+
+		//when
+		recipeService.deleteById(idToDelete);
+
+		//then
+		verify(recipeRepository, times(1)).deleteById(anyLong());
 	}
 }
